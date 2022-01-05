@@ -1,3 +1,4 @@
+
 #include<iostream>
 using namespace std;
 
@@ -14,6 +15,7 @@ int main(){
         }
         a=1;
         b=n-a;
-        cout<<a<<b<<endl;
+        cout<<a<<" "<< b<<endl;
     }
 }
+
