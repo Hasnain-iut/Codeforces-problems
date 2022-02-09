@@ -1,57 +1,31 @@
 #include<iostream>
-#include<map>
+#include<set>
 typedef long long int ll;
 using namespace std;
-
-int initialize(map<int,int> map1, int n, int* a){
-    static int i = 0;
-    if(i==n){
-        return 0;
-    }else{
-        map1[*(a+i++)] = 0;
-        initialize(map1, n, a);
-    }
-}
-
-int final_task(map<int,int> map1,int x, int n, int* a){
-    static int j = x-1;
-    static int ans =0;
-    if(j==0) return 0;
-    else{
-        if(map1[*(a+j)]==0){
-            ans++;
-        }
-        map1[*(a+j--)]++;
-        final_task(map1, x, n, a);
-    }
-}
 
 int main(){
     int n,m;
     cin>>n>>m;
+
+    set<int> set1;
     int a[n];
-
-    for(int i=0;i<n;i++){
-        cin>>a[i];
+    for(int j=0;j<n;j++){
+        cin>>a[j];
     }
 
-    while(m--){
-        int x;
-        cin>>x;
-        map<int,int> map1;
+    int b[n];
 
-        initialize(map1, n, a);
+    for(int i=n-1;i>=0;i--){
 
-        int ans=0;
-        for(int j=n-1;j>=x-1;j--){
-            if(map1[a[j]]==0){
-                ans++;
-            }
-            map1[a[j]]++;
-        }
-
-        cout<<ans<<endl;
+        set1.insert(a[i]);
+        b[i]=set1.size();
     }
 
+    int l;
+    for(int i=0;i<m;i++){
+        cin>>l;
+        cout<<b[l-1]<<endl;
+    }
+
+    return 0;
 }
-

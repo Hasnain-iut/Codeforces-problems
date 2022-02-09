@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 int main(){
     int t;
@@ -12,17 +13,21 @@ int main(){
             cin>>a[i];
         }
 
-        int flag =0;
+        sort(a, a+n);
+
+        int is_found[n] = {0};
+
         for(int i=0;i<n;i++){
-            if(a[i]<=n){
-                continue;
-            }else if((i+1)<(a[i]/2)){
-                flag++;
-            }else{
-                flag=-1;
-                break;
+            if(a[i] == a[i+1]){
+                is_found[i] = 1;
             }
         }
-        cout<<flag<<endl;
+
+        int flag = 0;
+
+        for(inr i=0;i<n;i++){
+            if(is_found[i] == 1)
+        }
+
     }
 }
