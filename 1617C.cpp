@@ -1,32 +1,51 @@
 #include<iostream>
 #include<algorithm>
+#include<set>
+#include<vector>
 using namespace std;
 int main(){
     int t;
     cin>>t;
     while(t--){
+
         int n;
         cin>>n;
-        int a[n];
-
-        for(int i=0;i<n;i++){
-            cin>>a[i];
+        set<int> set1;
+        vector<int> vec;
+        for(int i=1;i<=n;i++){
+            set1.insert(i);
         }
 
-        sort(a, a+n);
-
-        int is_found[n] = {0};
-
         for(int i=0;i<n;i++){
-            if(a[i] == a[i+1]){
-                is_found[i] = 1;
+            int x;
+            cin>>x;
+
+            if(set1.find(x)!=set1.end()){
+                set1.erase(x);
+            }else{
+                vec.push_back(x);
             }
         }
+        sort(vec.begin(), vec.end());
+        reverse(vec.begin(), vec.end());
+        int flag =0;
 
-        int flag = 0;
+        for(auto it=vec.begin();it!=vec.end();it++){
+            auto itr = set1.end();
 
-        for(inr i=0;i<n;i++){
-            if(is_found[i] == 1)
+            itr--;
+            int f = *itr;
+            if(f>(*it-1)/2){
+                flag = -1;
+                break;
+            }
+            set1.erase(itr);
+        }
+
+        if(flag == 0){
+            cout<<vec.size()<<endl;
+        }else if(flag == -1){
+            cout<<"-1"<<endl;
         }
 
     }

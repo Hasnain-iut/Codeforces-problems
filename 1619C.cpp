@@ -3,47 +3,32 @@
 using namespace std;
 int main(){
     int t;
-    cin>>t;
     while(t--){
-        int a,s;
-        cin>>a>>s;
-        vector<int> v;
-        int minus_flag=0;
-        while(s){
-            minus_flag = 0;
-            int x = a%10;
-            int y = s%10;
+        string a, b;
+        cin>>a>>b;
 
-            if((y-x)>=0)v.push_back(y-x);
-            else{
-                s/=10;
-                y+=10*(s%10);
-                if((y-x)>=0 && y>=10&& y<=19){
-                    v.push_back(y-x);
+        vector<char> vec1;
+        vector<char> vec2;
 
-                }else{
-                    cout<<"-1"<<endl;
-                    minus_flag=1;
-                    break;
-                }
-            }
 
-            a/=10;
-            s/=10;
-        }
-        if(a!=0 && minus_flag!=1){
-            cout<<"-1"<<endl;
-            minus_flag = 1;
-            continue;
-        }else if(minus_flag == 0){
-            while(v.back()==0){
-                v.pop_back();
+        for(int i=0;i<b.size();i++){
+            int x = a.size();
+            if(x<b.size()){
+                vec1.push_back('0');
+                x++;
+            }else{
+                vec1.push_back(a[i]);
             }
-            for(int i=v.size()-1;i>=0;i--){
-                cout<<v[i];
-            }
-            cout<<endl;
+            vec2.push_back(b[i]);
         }
 
+        for(int j=0;j<vec1.size();j++){
+            cout<<vec1[j];
+
+        }
+        for(int j=0;j<vec2.size();j++){
+            cout<<vec2[j];
+
+        }
     }
 }
